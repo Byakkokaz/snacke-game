@@ -242,22 +242,22 @@ function checkFood() {
 
 //========== UPDATE LEVEL ==========
 function updateLevel() {
-    if (score <= 25) {
+    if (score <= 15) {
         level = 1;
         gameSpeed = 250;
         generateObstacle(0);
     }
-    else if (score <= 50) {
+    else if (score <= 20) {
         level = 2;
         gameSpeed = 200;
         generateObstacle(2);
     }
-    else if (score <= 75) {
+    else if (score <= 25) {
         level = 3;
         gameSpeed = 150;
         generateObstacle(4);
     }
-    else if (score <= 100) {
+    else if (score <= 30) {
         level = 4;
         gameSpeed = 100;
         generateObstacle(6);
