@@ -264,7 +264,7 @@ function updateLevel() {
     }
     else {
         level = 5;
-        gameSpeed = 50;
+        gameSpeed = 75;
         generateObstacle(8);
     }
 }
