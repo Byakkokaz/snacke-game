@@ -21,3 +21,230 @@ button {
     font-size: 16px;
     cursor: pointer;
 }
+
+#controls {
+    margin-bottom: 20px;
+}
+
+#controls button {
+    margin: 0 10px;
+    border: 2px solid #555;
+    background-color: white;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+#controls button.active {
+    background-color: green;
+    color: white;
+    border-color: darkgreen;
+}
+
+/* Overlay styles for start and instruction screens */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    background: rgba(238, 238, 238, 0.98); /* matching canvas background #eee */
+    border: 2px solid black;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.overlay.hidden {
+    display: none !important;
+}
+
+.menu-title {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #333;
+}
+
+.menu-title-small {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.menu-btn {
+    margin: 8px 0;
+    width: 180px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #555;
+    background-color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.menu-btn:hover {
+    background-color: #ddd;
+}
+
+.menu-btn-small {
+    margin-top: 10px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #555;
+    background-color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.menu-btn-small:hover {
+    background-color: #ddd;
+}
+
+.instructions-content {
+    max-height: 250px;
+    overflow-y: auto;
+    text-align: left;
+    padding: 0 15px;
+    font-size: 11px;
+    line-height: 1.4;
+    color: #333;
+}
+
+.instructions-content strong {
+    display: block;
+    margin-top: 8px;
+    color: #000;
+}
+
+.instructions-content ul {
+    margin: 4px 0;
+    padding-left: 20px;
+}
+
+.instructions-content li {
+    margin-bottom: 4px;
+}
+
+/* Button disabled state */
+button:disabled {
+    background-color: #ddd !important;
+    color: #888 !important;
+    border-color: #aaa !important;
+    cursor: not-allowed !important;
+}
+
+/* Color selector styles */
+.color-select-label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 8px;
+}
+
+.color-selector {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    width: 90%;
+}
+
+.color-option {
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    background: white;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 60px;
+    box-sizing: border-box;
+}
+
+.color-option:hover {
+    border-color: #888;
+    background: #f7f7f7;
+}
+
+.color-option.active {
+    border-color: green;
+    background: #eefbee;
+    box-shadow: 0 0 5px rgba(0, 128, 0, 0.2);
+}
+
+.color-option span {
+    font-size: 9px;
+    font-weight: bold;
+    margin-top: 4px;
+    color: #555;
+}
+
+/* Play/Pause external control bar */
+#gameCtrlBar {
+    display: none; /* shown via JS when game starts */
+    justify-content: space-between;
+    width: 400px;
+    margin: 8px auto 0;
+}
+
+#gameCtrlBar.visible {
+    display: flex;
+}
+
+.game-ctrl-btn {
+    width: 48%;
+    padding: 8px 0;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #555;
+    background-color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
+}
+
+.game-ctrl-btn:hover {
+    background-color: #eee;
+    transform: scale(1.03);
+}
+
+#playBtn {
+    border-color: darkgreen;
+    color: darkgreen;
+}
+
+#playBtn:hover {
+    background-color: #eeffee;
+}
+
+#pauseBtn {
+    border-color: #555;
+    color: #333;
+}
+
+/* Pause screen overlay styles */
+.pause-title {
+    font-size: 42px;
+    font-weight: bold;
+    color: #222;
+    margin: 0 0 12px 0;
+    letter-spacing: 4px;
+}
+
+.pause-hint {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+}
