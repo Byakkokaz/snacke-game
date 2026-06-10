@@ -8,7 +8,112 @@
 
 <body>
     <h2>Snake Game</h2>
-    <canvas id="game" width="400" height="400"></canvas>
+    <div id="controls">
+        <button id="playerBtn" class="active">Player</button>
+        <button id="aiBtn">Computer (AI)</button>
+    </div>
+    <div id="gameContainer" style="position: relative; display: inline-block;">
+        <canvas id="game" width="400" height="400"></canvas>
+        
+        <!-- Pause Screen Overlay -->
+        <div id="pauseScreen" class="overlay hidden">
+            <h2 class="pause-title">PAUSE</h2>
+            <p class="pause-hint">tekan esc untuk keluar</p>
+        </div>
+        
+        <!-- Tampilan Awal Game (Start Screen) -->
+        <div id="startScreen" class="overlay">
+            <h1 class="menu-title">Snake Game</h1>
+            
+            <div class="color-select-label">Pilih Karakter Ular:</div>
+            <div class="color-selector">
+                <div class="color-option active" data-color="green">
+                    <svg width="40" height="14" viewBox="0 0 40 14">
+                        <rect x="5" y="2" width="10" height="10" fill="green" rx="1" />
+                        <rect x="17" y="2" width="10" height="10" fill="green" rx="1" />
+                        <rect x="29" y="2" width="10" height="10" fill="green" rx="1" />
+                        <circle cx="35" cy="5" r="1.2" fill="white" />
+                        <circle cx="35" cy="5" r="0.6" fill="black" />
+                    </svg>
+                    <span>Hijau</span>
+                </div>
+                <div class="color-option" data-color="blue">
+                    <svg width="40" height="14" viewBox="0 0 40 14">
+                        <rect x="5" y="2" width="10" height="10" fill="blue" rx="1" />
+                        <rect x="17" y="2" width="10" height="10" fill="blue" rx="1" />
+                        <rect x="29" y="2" width="10" height="10" fill="blue" rx="1" />
+                        <circle cx="35" cy="5" r="1.2" fill="white" />
+                        <circle cx="35" cy="5" r="0.6" fill="black" />
+                    </svg>
+                    <span>Biru</span>
+                </div>
+                <div class="color-option" data-color="purple">
+                    <svg width="40" height="14" viewBox="0 0 40 14">
+                        <rect x="5" y="2" width="10" height="10" fill="purple" rx="1" />
+                        <rect x="17" y="2" width="10" height="10" fill="purple" rx="1" />
+                        <rect x="29" y="2" width="10" height="10" fill="purple" rx="1" />
+                        <circle cx="35" cy="5" r="1.2" fill="white" />
+                        <circle cx="35" cy="5" r="0.6" fill="black" />
+                    </svg>
+                    <span>Ungu</span>
+                </div>
+                <div class="color-option" data-color="orange">
+                    <svg width="40" height="14" viewBox="0 0 40 14">
+                        <rect x="5" y="2" width="10" height="10" fill="orange" rx="1" />
+                        <rect x="17" y="2" width="10" height="10" fill="orange" rx="1" />
+                        <rect x="29" y="2" width="10" height="10" fill="orange" rx="1" />
+                        <circle cx="35" cy="5" r="1.2" fill="white" />
+                        <circle cx="35" cy="5" r="0.6" fill="black" />
+                    </svg>
+                    <span>Oranye</span>
+                </div>
+                <div class="color-option" data-color="black">
+                    <svg width="40" height="14" viewBox="0 0 40 14">
+                        <rect x="5" y="2" width="10" height="10" fill="black" rx="1" />
+                        <rect x="17" y="2" width="10" height="10" fill="black" rx="1" />
+                        <rect x="29" y="2" width="10" height="10" fill="black" rx="1" />
+                        <circle cx="35" cy="5" r="1.2" fill="white" />
+                        <circle cx="35" cy="5" r="0.6" fill="black" />
+                    </svg>
+                    <span>Hitam</span>
+                </div>
+            </div>
+            
+            <div style="margin-top: 15px;">
+                <button id="startBtn" class="menu-btn">Mulai Game</button>
+                <button id="guideBtn" class="menu-btn">Petunjuk</button>
+            </div>
+        </div>
+        
+        <!-- Tampilan Petunjuk (Instructions Screen) -->
+        <div id="instructionsScreen" class="overlay hidden">
+            <h3 class="menu-title-small">Petunjuk Permainan</h3>
+            <div class="instructions-content">
+                <strong>Aturan Main:</strong>
+                <ul>
+                    <li>Kendalikan ular dengan tombol arah panah pada Keyboard (Up, Down, Left, Right).</li>
+                    <li>Makan makanan merah (red food) untuk memperpanjang ular dan menambah skor.</li>
+                    <li>Hindari menabrak rintangan abu-abu (obstacles) dan tubuh ular sendiri.</li>
+                    <li>Ular memiliki 3 nyawa (lives). Menabrak tubuh sendiri atau rintangan akan mengurangi 1 nyawa dan mereset posisi ular. Game over jika nyawa habis.</li>
+                </ul>
+                <strong>Tantangan Level:</strong>
+                <ul>
+                    <li><strong>Level 1:</strong> Skor &le; 25 | Kecepatan: Lambat (250ms) | Rintangan: 0 | Tembus dinding (wrap-around).</li>
+                    <li><strong>Level 2:</strong> Skor 26-50 | Kecepatan: Sedang (200ms) | Rintangan: 2 | Tembus dinding.</li>
+                    <li><strong>Level 3:</strong> Skor 51-75 | Kecepatan: Cepat (150ms) | Rintangan: 4 | Tembus dinding.</li>
+                    <li><strong>Level 4:</strong> Skor 76-100 | Kecepatan: Sangat Cepat (100ms) | Rintangan: 6 | Tembus dinding.</li>
+                    <li><strong>Level 5:</strong> Skor &gt; 100 | Kecepatan: Ekstrem (50ms) | Rintangan: 8 | Dinding Padat (menabrak tepi canvas akan mengurangi nyawa!).</li>
+                </ul>
+            </div>
+            <button id="backBtn" class="menu-btn-small">Kembali</button>
+        </div>
+    </div>
+
+    <!-- Play / Pause buttons, below canvas -->
+    <div id="gameCtrlBar">
+        <button id="playBtn" class="game-ctrl-btn hidden">&#9654; Play</button>
+        <button id="pauseBtn" class="game-ctrl-btn hidden">&#10074;&#10074; Pause</button>
+    </div>
 
     <script src="game.js"></script>
 
